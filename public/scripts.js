@@ -5,10 +5,11 @@ const url = "https://europe-west1-videoprobki-d4bbb.cloudfunctions.net/";
 async function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 14,
-    center: { lat: 50.489267, lng: 30.494404 }
+    center: { lat: 50.49631083426618, lng: 30.538005989746118 }
   });
 
   const data = await fetch(`${url}getMapObjects`).then(r => r.json());
+  console.log(data);
   data
     .map(({ polygons }) => polygons)
     .reduce((a, b) => a.concat(b), [])
@@ -25,15 +26,22 @@ async function initMap() {
         })
     );
 
-  // var bermudaTriangle = new google.maps.Polygon({
-  //   paths: [{ lat: 50.489254, lng: 30.497883 }, { lat: 50.489259, lng: 30.49629 }, { lat: 50.489267, lng: 30.494404 }, { lat: 50.489271, lng: 30.492763 }],
-  //   strokeColor: "#FF0000",
-  //   strokeOpacity: 0.8,
-  //   strokeWeight: 2,
-  //   fillColor: "#FF0000",
-  //   fillOpacity: 0.35,
-  //   map
-  // });
+  const popup = new google.maps.InfoWindow({
+    content: ""
+  });
 
-  // bermudaTriangle.setMap(map);
+  data.map(item => {
+    const marker = new google.maps.Marker({
+      position: { lat: item.lat, lng: item.lon },
+      title: item.address,
+      map
+    });
+
+    marker.addListener("click", () => {
+      popup.setContent(`<img src="${item.gif}?r=${Date.now()}" />`);
+      popup.open(map, marker);
+    });
+
+    return marker;
+  });
 }

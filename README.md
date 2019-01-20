@@ -1,3 +1,5 @@
+firrebase deploy --only hosting
+
 cam_info[3] = `
 
 <div class="cam-number vpCamNum240">
