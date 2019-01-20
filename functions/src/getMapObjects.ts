@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 export const getMapObjects = async () => {
-  const { data } = await axios.default.get("http://mobile.videoprobki.ua/getMapObjects/0");
+  const { data } = await axios.default.get("http://videoprobki.ua/getMapObjects/0");
 
   const setPolyline = (coord: string, condition: string, cam_sid: number) => ({
     id: cam_sid,
