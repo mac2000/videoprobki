@@ -4,9 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>videoprobki</title>
+  <style>
+    html,
+    body,
+    #map {
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
-  <h3>demo</h3>
+  <div id="map"></div>
   <script src="scripts.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUFcjOiuheQ00ylGvGy_ifaUJAx8ghJN0&callback=initMap"></script>
 </body>
 </html>
