@@ -12,7 +12,7 @@ export const getMapObjects = functions.region("europe-west1").https.onRequest((r
       res.set("Cache-Control", "public, max-age=60");
       return res.json(data);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ message: error.message });
     }
   })
 );
@@ -28,7 +28,7 @@ export const getStreams = functions.region("europe-west1").https.onRequest((req,
       res.set("Cache-Control", "public, max-age=60");
       return res.json(data);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(500).json({ message: error.message });
     }
   })
 );
