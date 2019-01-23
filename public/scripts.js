@@ -10,21 +10,22 @@ async function initMap() {
 
   const data = await fetch(`${url}getMapObjects`).then(r => r.json());
   console.log(data);
-  data
-    .map(({ polygons }) => polygons)
-    .reduce((a, b) => a.concat(b), [])
-    .map(
-      polygons =>
-        new google.maps.Polygon({
-          paths: polygons.map(({ lat, lon }) => ({ lat, lng: lon })),
-          strokeColor: "orange",
-          strokeOpacity: 0.8,
-          strokeWeight: 1,
-          fillColor: "orange",
-          fillOpacity: 0.35,
-          map
-        })
-    );
+
+  // data
+  //   .map(({ polygons }) => polygons)
+  //   .reduce((a, b) => a.concat(b), [])
+  //   .map(
+  //     polygons =>
+  //       new google.maps.Polygon({
+  //         paths: polygons.map(({ lat, lon }) => ({ lat, lng: lon })),
+  //         strokeColor: "orange",
+  //         strokeOpacity: 0.8,
+  //         strokeWeight: 1,
+  //         fillColor: "orange",
+  //         fillOpacity: 0.35,
+  //         map
+  //       })
+  //   );
 
   const popup = new google.maps.InfoWindow({
     content: ""
